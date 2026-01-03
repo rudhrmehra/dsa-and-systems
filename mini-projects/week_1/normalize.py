@@ -1,15 +1,15 @@
+def normalize_url(url):
+    url = url.lower().strip()
 
-#https://Google.com/search/
-url = str(input("Please input a URL: "))
-url = url.lower()
-url = url.strip()
+    if url.startswith("https://"):
+        url = url[8:]
+    elif url.startswith("http://"):
+        url = url[7:]
 
-if url.startswith("https://"):
-    new = url[8:]
-elif url.startswith("http://"):
-    new = url[7:]
+    while url.endswith("/"):
+        url = url[:-1]
 
-if new.endswith("/"):
-    final = new[:-1]
-print(final)
+    return url
 
+user_input = input("Please input a URL: ")
+print(normalize_url(user_input))
